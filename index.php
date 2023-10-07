@@ -112,6 +112,7 @@ $tchrLst->deleteTeacherByName($nata);
 array_map(function (Teacher $t){
   echo $t->toString();
   echo "<br>";
+
 }, $tchrLst->getTeachers());
 
 
