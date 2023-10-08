@@ -53,7 +53,6 @@ class Teacher
     $this->jobTitle = $jobTitle;
   }
 
-
 }
 
 class TeacherList {
@@ -79,6 +78,13 @@ class TeacherList {
       return $t->getName() !== $teacher->getName();
     });
   }
+//  function setAllTeacherSubject ($tchrLst)
+//  {
+//    return array_map(function (Teacher $t) {
+//      $t->setSubject('AI');
+//      return $t;
+//    }, $tchrLst->getTeachers());
+//  }
 
 }
 
@@ -97,22 +103,33 @@ foreach ($tchrLst->getTeachers() as $teacher) {
 echo "------" . "<br>";
 
 $tchrLst->addTeacher($evgen);
+
+function setAllTeacherSubject ($tchrLst): array
+{
+  return array_map(function (Teacher $t) {
+    $t->setSubject('AI');
+    return $t;
+  }, $tchrLst->getTeachers());
+}
+
+setAllTeacherSubjec($tchrLst);
+
 foreach ($tchrLst->getTeachers() as $teacher) {
   print_r($teacher->toString() . "<br>");
 }
 echo "------" . "<br>";
 
-$evgen->setSubject("physics");
+//$evgen->setSubject("physics");
 
 echo $evgen->toString();
 echo '<br>'. '<br>' . 'after deletion from list: '. '<br>' . '<br>';
 
 $tchrLst->deleteTeacherByName($nata);
 
-array_map(function (Teacher $t){
+array_map(function (Teacher $t)
+{
   echo $t->toString();
   echo "<br>";
-
 }, $tchrLst->getTeachers());
 
 
